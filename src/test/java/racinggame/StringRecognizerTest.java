@@ -11,7 +11,7 @@ public class StringRecognizerTest {
     void 스트링_인풋_스플릿() {
         String str = "pobi,crong,honux";
         StringRecognizer stringRecognizer = new StringRecognizer();
-        String[] splitStr = stringRecognizer.getStringSplit(str);
+        String[] splitStr = stringRecognizer.stringSplit(str);
         String[] testStr = {"pobi", "crong", "honux"};
 
         Assertions.assertThat(splitStr).isEqualTo(testStr);
@@ -21,17 +21,17 @@ public class StringRecognizerTest {
     void 스트링_인풋_스플릿_오류() {
         String str = "pobi,crong,honuxxxxx";
         StringRecognizer stringRecognizer = new StringRecognizer();
-        String[] splitStr = stringRecognizer.getStringSplit(str);
+        String[] splitStr = stringRecognizer.stringSplit(str);
 
-        Assertions.assertThat(stringRecognizer.isWrongName(splitStr)).isFalse();
     }
 
-    @Test
-    void 시도할_횟수_입력_자동차_생성() {
-        String tryTimes = "5";
-        StringRecognizer stringRecognizer = new StringRecognizer();
-        int times = stringRecognizer.getTryTimes(tryTimes);
-
-        Assertions.assertThat(times).isEqualTo(5);
-    }
+//    @Test
+//    void 시도할_횟수_입력_자동차_생성() {
+//        String tryTimes = "5";
+//        StringRecognizer stringRecognizer = new StringRecognizer();
+//
+//        int times = stringRecognizer.readTryTimes("5");
+//
+//        Assertions.assertThat(times).isEqualTo(5);
+//    }
 }
