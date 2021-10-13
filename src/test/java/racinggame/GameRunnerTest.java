@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class GameRunnerTest {
 
     @Test
@@ -37,6 +35,6 @@ class GameRunnerTest {
 
         GameRunner gameRunner = new GameRunner();
 
-        Assertions.assertThat(gameRunner.printManyWinners(carList)).isEqualTo("crong,honux");
+        Assertions.assertThat(gameRunner.printMultipleWinners(carList)).isEqualTo("crong,honux");
     }
 }

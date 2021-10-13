@@ -42,7 +42,7 @@ public class GameRunner {
             return;
         }
 
-        String winners = printManyWinners(listCars);
+        String winners = printMultipleWinners(listCars);
         System.out.println("최종 우승자는 " + winners + " 입니다.");
 
     }
@@ -72,7 +72,7 @@ public class GameRunner {
         return listCars.get(0).getCarName();
     }
 
-    public String printManyWinners(List<Car> listCars) {
+    public String printMultipleWinners(List<Car> listCars) {
         String winners = listCars.get(0).getCarName();
         for (int i = 1; i < listCars.size() - (carSet.size() - 1); i++) {
             winners += "," + listCars.get(i).getCarName();

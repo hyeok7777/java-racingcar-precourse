@@ -41,10 +41,12 @@ public class StringRecognizer {
         String[] tempStrList = consoleString.split(",");
 
         if(!isWrongName(tempStrList)) {
+            System.out.println("[ERROR] 자동차 이름은 5글자 이내여야 합니다. ");
             racingReader();
         }
 
         if(!isInputNotNull(consoleString)) {
+            System.out.println("[ERROR] 자동차 이름은 5글자 이내여야 합니다. ");
             racingReader();
         }
 
@@ -60,7 +62,7 @@ public class StringRecognizer {
 
     private boolean isWrongName(String[] tempStrList) {
         for (String str: tempStrList) {
-            if(str.length() > 6) {
+            if(str.length() > 5) {
                 return false;
             }
         }
