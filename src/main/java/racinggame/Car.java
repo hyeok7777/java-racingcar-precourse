@@ -1,33 +1,30 @@
 package racinggame;
 
 public class Car implements Comparable<Car> {
-    private String carName;
-    private Integer currentPosition;
+    private Name name;
+    private Position position;
 
-    public Car(String carName, Integer currentPosition) {
-        this.carName = carName;
-        this.currentPosition = currentPosition;
+    public Car(Name name, Position position) {
+        this.name = name;
+        this.position = new Position();
+        this.position = position;
     }
 
-    public String getCarName() {
-        return carName;
+    public Name getCarName() {
+        return name;
     }
 
-    public void setCarName(String carName) {
-        this.carName = carName;
+    public void setCarName(Name name) {
+        this.name = name;
     }
 
-    public Integer getCurrentPosition() {
-        return currentPosition;
-    }
-
-    public void setCurrentPosition(Integer currentPosition) {
-        this.currentPosition = currentPosition;
+    public Position getCurrentPosition() {
+        return position;
     }
 
     public void printCar() {
-        System.out.print(getCarName() + " : ");
-        for (int i = 0; i < getCurrentPosition(); i++) {
+        System.out.print(getCarName().getName() + " : ");
+        for (int i = 0; i < position.getPosition(); i++) {
             System.out.print("-");
         }
         System.out.println();
@@ -35,11 +32,11 @@ public class Car implements Comparable<Car> {
 
     @Override
     public int compareTo(Car o) {
-        if (this.currentPosition > o.getCurrentPosition()) {
+        if (this.position.getPosition() > o.getCurrentPosition().getPosition()) {
             return -1;
         }
 
-        if (this.currentPosition < o.getCurrentPosition()) {
+        if (this.position.getPosition() < o.getCurrentPosition().getPosition()) {
             return 1;
         }
 
