@@ -10,7 +10,7 @@ import java.util.*;
 
 public class Cars {
     private List<Car> cars;
-    private Set<Position> carSet;
+    private Set<Integer> carSet;
 
     public Cars() {
         cars = new ArrayList<>();
@@ -27,7 +27,6 @@ public class Cars {
 
     public void printWinners() {
         Collections.sort(cars);
-
         if (isWinnerSingle()) {
             Name winner = printSingleWinner();
             System.out.println("최종 우승자: " + winner.getName());
@@ -45,26 +44,46 @@ public class Cars {
 
     private Name printMultipleWinners() {
         System.out.println("printMultipleWinners() = ");
-        Set carSet = new HashSet<>();
-        Name winners = cars.get(0).getCarName();
-        System.out.println("winners = " + winners);
-        for (int i = 1; i < cars.size() - (carSet.size() - 1); i++) {
-            winners.setMultipleName(cars.get(i).getCarName().getName());
+        Name winners = new Name();
+        Car firstCar = cars.get(0);
+        winners.setSingleName(firstCar.getCarName().getName());
+        System.out.println("winners = " + winners.getName());
+        winners.setMultipleName(cars);
+
+        for (int i = 1; i < cars.size() ; i++) {
+            checkWinners(winners, firstCar.getCurrentPosition().getPosition(), cars.get(i));
         }
         return winners;
     }
 
+    private void checkWinners(Name winners, int firstPosition, Car currentCar ) {
+        if(currentCar.getCurrentPosition().getPosition() == firstPosition)
+        {
+            winners.setMultipleName(currentCar.getCarName().getName());
+        }
+    }
+
     private boolean isWinnerSingle() {
-        System.out.println("isWinnerSingle() = ");
+        boolean isWinnerSingle = true;
+        Car setFirstCar = cars.get(0);
+        Car setSecondCar = cars.get(0);
+        if (cars.size() > 1) {
+            setSecondCar = cars.get(1);
+        }
+
+        if (setFirstCar.getCurrentPosition().getPosition() == setSecondCar.getCurrentPosition().getPosition() && cars.size() > 1) {
+            isWinnerSingle = false;
+        }
+
+
         for (int i = 0; i < cars.size(); i++) {
             Car setCar = cars.get(i);
-            System.out.println("setCar.getCurrentPosition().getPosition() = " + setCar.getCurrentPosition().getPosition());
-            carSet.add(setCar.getCurrentPosition());
+            carSet.add(setCar.getCurrentPosition().getPosition());
         }
-        if (carSet.size() < cars.size()) {
-            return false;
-        }
-        return true;
+        System.out.println("carSet.size() = " + carSet.size());
+        System.out.println("cars = " + cars.size());
+
+        return isWinnerSingle;
     }
 
     public void carFunction() {
