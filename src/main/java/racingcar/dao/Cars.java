@@ -3,7 +3,6 @@ package racingcar.dao;
 
 import racingcar.vo.Car;
 import racingcar.vo.Name;
-import racingcar.vo.Position;
 import racingcar.vo.Speed;
 
 import java.util.*;
@@ -50,15 +49,14 @@ public class Cars {
         System.out.println("winners = " + winners.getName());
         winners.setMultipleName(cars);
 
-        for (int i = 1; i < cars.size() ; i++) {
+        for (int i = 1; i < cars.size(); i++) {
             checkWinners(winners, firstCar.getCurrentPosition().getPosition(), cars.get(i));
         }
         return winners;
     }
 
-    private void checkWinners(Name winners, int firstPosition, Car currentCar ) {
-        if(currentCar.getCurrentPosition().getPosition() == firstPosition)
-        {
+    private void checkWinners(Name winners, int firstPosition, Car currentCar) {
+        if (currentCar.getCurrentPosition().getPosition() == firstPosition) {
             winners.setMultipleName(currentCar.getCarName().getName());
         }
     }

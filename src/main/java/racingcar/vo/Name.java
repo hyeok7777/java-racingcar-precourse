@@ -22,7 +22,7 @@ public class Name {
     }
 
     public void setMultipleName(String name) {
-        this.name += ", "+name;
+        this.name += ", " + name;
     }
 
     public String setMultipleName(List<Car> cars) {

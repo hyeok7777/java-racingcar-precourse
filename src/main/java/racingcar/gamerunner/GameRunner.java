@@ -1,13 +1,10 @@
 package racingcar.gamerunner;
 
-import camp.nextstep.edu.missionutils.Console;
 import racingcar.dao.Cars;
 import racingcar.validator.StringValidator;
 import racingcar.vo.Car;
 import racingcar.vo.Name;
 import racingcar.vo.Position;
-
-import java.util.ArrayList;
 
 public class GameRunner {
     private StringValidator stringValidator;

@@ -3,10 +3,6 @@ package racingcar.validator;
 import camp.nextstep.edu.missionutils.Console;
 
 public class StringValidator {
-    public String[] validateCarName(String tmpCarName) {
-
-        return null;
-    }
 
     private String consoleReadline;
     private Integer tryTimes;
