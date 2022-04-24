@@ -36,38 +36,55 @@ public class StringValidator {
     public Integer readTryTimes() {
         System.out.println("시도할 회수는 몇회인가요?");
         String strTryTimes = Console.readLine();
-        return Integer.parseInt(strTryTimes);
+        int tryTimes = 0;
+        try {
+            tryTimes = Integer.parseInt(strTryTimes);
+        } catch (NumberFormatException e) {
+            System.out.println("[ERROR] 시도 횟수는 숫자여야 합니다. ");
+            readTryTimes();
+        }
+
+        if(tryTimes == 0) {
+            System.out.println("[ERROR] 시도 횟수는 0 이상이어야 합니다. ");
+            readTryTimes();
+        }
+
+        return tryTimes;
     }
 
     public String[] stringSplit(String consoleString) {
         String[] tempStrList = consoleString.split(",");
 
-        if(!isWrongName(tempStrList)) {
-            System.out.println("[ERROR] 자동차 이름은 5글자 이내여야 합니다. ");
-            racingReader();
-        }
-
-        if(!isInputNotNull(consoleString)) {
-            System.out.println("[ERROR] 자동차 이름은 5글자 이내여야 합니다. ");
+        try {
+            isWrongName(tempStrList);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
             racingReader();
         }
 
         return tempStrList;
     }
 
-    private boolean isInputNotNull(String consoleReadline) {
-        if (consoleReadline.length() == 0) {
-            return false;
+    private void isWrongName(String[] tempStrList) {
+        for (String str : tempStrList) {
+            nameLengthCheck(str);
+            nameNullCheck(str);
         }
-        return true;
     }
 
-    private boolean isWrongName(String[] tempStrList) {
-        for (String str: tempStrList) {
-            if(str.length() > 5) {
-                return false;
-            }
+    private void nameLengthCheck(String str) {
+        if (str.length() > 5) {
+            throw new IllegalArgumentException("[ERROR] 자동차 이름은 5글자 이내여야 합니다. ");
         }
-        return true;
+    }
+
+    private void nameNullCheck(String str) {
+        if (str.length() == 0) {
+            throw new IllegalArgumentException("[ERROR] 자동차 이름은 공백일 수 없습니다.");
+        }
+
+        if (consoleReadline.length() == 0) {
+            throw new IllegalArgumentException("[ERROR] 자동차 이름은 공백일 수 없습니다.");
+        }
     }
 }

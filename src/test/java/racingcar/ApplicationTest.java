@@ -25,7 +25,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 전진_정지2() {
+    void 전진_정지2_공동우승() {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("pobi,woni", "1");
@@ -44,6 +44,18 @@ class ApplicationTest extends NsTest {
             }
         );
     }
+
+
+    @Test
+    void 이름에_대한_예외_처리2() {
+        assertSimpleTest(
+                () -> {
+                    runException("pobi,,abc");
+                    assertThat(output()).contains(ERROR_MESSAGE);
+                }
+        );
+    }
+
 
     @Override
     public void runMain() {
